@@ -163,7 +163,7 @@ let ctri = {
         jQuery.fn.dataTable.ext.search.push(ctri.topicFilter)
 
         // Set search input
-        ctri.table.search(params.get('search') || "").draw()
+        ctri.table.search(ctri.params.get('search') || "").draw()
     },
 
     expand: (e) => {
