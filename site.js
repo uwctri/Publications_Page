@@ -126,9 +126,9 @@ let ctri = {
     },
 
     init: () => {
-	    
-	// Remove loading banner
-	jQuery("#gtmNoLoad").remove()
+
+        // Remove loading banner
+        jQuery("#gtmNoLoad").remove()
 
         // Setup Table
         ctri.table = jQuery('#mainDataTable').DataTable({
@@ -160,6 +160,10 @@ let ctri = {
         jQuery(".dataTablesCustom_sort").after(ctri.generateTopicsDropDown())
         jQuery(".dataTablesCustom_topic").on('change', ctri.topicFilterDraw).trigger("change")
         jQuery.fn.dataTable.ext.search.push(ctri.topicFilter)
+
+        // Grab query params, set search input
+        let params = new URLSearchParams(location.search)
+        ctri.table.search(params.get('search') || "").draw()
     },
 
     expand: (e) => {
