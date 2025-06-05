@@ -5,6 +5,7 @@ let ctri = {
     data: [],
     table: null,
     dataLink: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRfGyGPkZg8sJGuKa3XvAU1Cr7_tf-Wm4JIrKkNsP-tyNa0jowVhayJypx3wYy-ifxQ7CPNjNOKoUPQ/pub?gid=1937609001&single=true&output=csv',
+    params: new URLSearchParams(location.search),
 
     dataCols: [
         {
@@ -161,8 +162,7 @@ let ctri = {
         jQuery(".dataTablesCustom_topic").on('change', ctri.topicFilterDraw).trigger("change")
         jQuery.fn.dataTable.ext.search.push(ctri.topicFilter)
 
-        // Grab query params, set search input
-        let params = new URLSearchParams(location.search)
+        // Set search input
         ctri.table.search(params.get('search') || "").draw()
     },
 
